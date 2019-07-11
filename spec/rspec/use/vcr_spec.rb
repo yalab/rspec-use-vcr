@@ -1,9 +1,9 @@
 RSpec.describe Rspec::Use::Vcr do
-  it "has a version number" do
-    expect(Rspec::Use::Vcr::VERSION).not_to be nil
-  end
+  use_vcr
+  describe 'http connect' do
+    subject { Net::HTTP.get_response(URI('http://www.iana.org/domains/reserved')) }
+    before { subject }
+    it { expect(File.exist?('fixtures/vcr_cassettes/Rspec_Use_Vcrhttpconnect.yml')).to be_truthy }
 
-  it "does something useful" do
-    expect(false).to eq(true)
   end
 end
