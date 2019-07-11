@@ -12,4 +12,4 @@ end
 
 RSpec.configure do |c|
   c.extend Rspec::Use::Vcr
-end
+end if RSpec.respond_to?(:configure)
